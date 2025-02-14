@@ -1,11 +1,16 @@
 <script setup>
-import Inicio from './components/principal/Inicio.vue';
 import NavBar from './components/principal/NavBar.vue';
+import {useAuthStore} from "./stores/auth.js";
+import {storeToRefs} from "pinia";
+import MenuHamb from "./components/dashboard/MenuHamb.vue";
+
+const authStore = useAuthStore()
+const {token} = storeToRefs(authStore);
 
 </script>
 
 <template>
-  <NavBar></NavBar>
+  <NavBar v-if="!token"></NavBar>
   <!-- <Inicio></Inicio> -->
    <router-view></router-view>
 
@@ -14,7 +19,7 @@ import NavBar from './components/principal/NavBar.vue';
 <style scoped>
 
 .miclasexd{
-  background:url("/public/img/sw.jpg") center/cover no-repeat;
+  background:url("/public/img/salon-clases.jpg") center/cover no-repeat;
 }
 
 </style>
