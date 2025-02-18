@@ -3,7 +3,7 @@ import {FwbAvatar, FwbSidebar, FwbSidebarItem, FwbSidebarLogo} from 'flowbite-vu
 </script>
 
 <template>
-  <div class="flex justify-end ">
+  <div class="flex justify-end">
     <fwb-sidebar class="w-1/6 shadow-xl">
       <fwb-sidebar-logo name="EAAS" logo="/img/school.png" tag="router-link"/>
       <fwb-sidebar-item>
