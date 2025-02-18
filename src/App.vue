@@ -12,6 +12,7 @@ const {token} = storeToRefs(authStore);
 <template>
   <NavBar v-if="!token"></NavBar>
   <!-- <Inicio></Inicio> -->
+  <MenuHamb v-else></MenuHamb>
    <router-view></router-view>
 
 </template>

@@ -12,6 +12,7 @@ import NotFound from "../components/NotFound.vue";
 import {useAuthStore} from "../stores/auth.js";
 import {storeToRefs} from "pinia";
 import NoAutorizado from "../components/NoAutorizado.vue";
+import Grados from "../components/dashboard/admin/Grados.vue";
 
 const routes = [
     {path: '/', name: 'Inicio', component: Inicio},
@@ -29,6 +30,7 @@ const routes = [
     },
     {path: '/not-found', name: 'NotFound', component: NotFound},
     {path: '/no-autorizado', name: 'NoAutorizado', component: NoAutorizado},
+    {path: '/grados', name: 'Grados', component: Grados, meta: {title: 'Grados', requiresAuth: true, puedoEntrar: "administrador"},},
 ];
 
 const router = createRouter({
@@ -69,7 +71,11 @@ router.beforeEach((to, from, next) => {
             }
         }
     } else {
-        next();
+        if (token.value){
+            next({name: 'InicioDashboard'});
+        }else {
+            next();
+        }
     }
     //si no esta autorizado, vista sin permiso
 
