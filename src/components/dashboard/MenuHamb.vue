@@ -1,5 +1,11 @@
 <script setup>
 import {FwbAvatar, FwbSidebar, FwbSidebarItem, FwbSidebarLogo} from 'flowbite-vue'
+import {useAuthStore} from "../../stores/auth.js";
+import {storeToRefs} from "pinia";
+
+const usuarioStore = useAuthStore()
+const {user} = storeToRefs(usuarioStore);
+const rol = user.value.roles[0].name
 </script>
 
 <template>
@@ -96,8 +102,9 @@ import {FwbAvatar, FwbSidebar, FwbSidebarItem, FwbSidebarLogo} from 'flowbite-vu
         <template #default>Logout</template>
       </fwb-sidebar-item>
     </fwb-sidebar>
+
     <div class="flex w-1/6 justify-center items-center p-1 space-x-5 mt-2">
-      <h1 class="flex font-bold">Administrador</h1>
+      <h1 class="flex font-bold">{{rol}}</h1>
       <div class="flex justify-center space-x-4">
         <fwb-avatar img="/img/ekko-avatar.jpg" rounded/>
       </div>
