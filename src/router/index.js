@@ -13,6 +13,7 @@ import {useAuthStore} from "../stores/auth.js";
 import {storeToRefs} from "pinia";
 import NoAutorizado from "../components/NoAutorizado.vue";
 import Grados from "../components/dashboard/admin/Grados.vue";
+import Index from "../components/dashboard/Index.vue";
 
 const routes = [
     {path: '/', name: 'Inicio', component: Inicio},
@@ -27,6 +28,12 @@ const routes = [
         name: 'InicioDashboard',
         component: InicioDashboard,
         meta: {title: 'InicioDashboard', requiresAuth: true, puedoEntrar: "administrador"},
+    },
+    {
+        path: '/index',
+        name: 'Index',
+        component: Index,
+        meta: {title: 'ADMIN', requiresAuth: true, puedoEntrar: "administrador"},
     },
     {path: '/not-found', name: 'NotFound', component: NotFound},
     {path: '/no-autorizado', name: 'NoAutorizado', component: NoAutorizado},

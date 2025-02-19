@@ -3,6 +3,7 @@ import NavBar from './components/principal/NavBar.vue';
 import {useAuthStore} from "./stores/auth.js";
 import {storeToRefs} from "pinia";
 import MenuHamb from "./components/dashboard/MenuHamb.vue";
+import Index from "./components/dashboard/Index.vue";
 
 const authStore = useAuthStore()
 const {token} = storeToRefs(authStore);
@@ -10,10 +11,12 @@ const {token} = storeToRefs(authStore);
 </script>
 
 <template>
-  <NavBar v-if="!token"></NavBar>
-  <!-- <Inicio></Inicio> -->
-  <MenuHamb v-else></MenuHamb>
-   <router-view></router-view>
+  <div v-if="!token" class="container">
+    <NavBar ></NavBar>
+    <router-view></router-view>
+  </div>
+
+  <Index v-else></Index>
 
 </template>
 
