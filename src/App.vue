@@ -11,7 +11,7 @@ const {token} = storeToRefs(authStore);
 </script>
 
 <template>
-  <div v-if="!token" class="container">
+  <div v-if="!token">
     <NavBar ></NavBar>
     <router-view></router-view>
   </div>

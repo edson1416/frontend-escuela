@@ -5,7 +5,7 @@ import {storeToRefs} from "pinia";
 
 const usuarioStore = useAuthStore()
 const {user} = storeToRefs(usuarioStore);
-const rol = user.value.roles[0].name
+
 </script>
 
 <template>
