@@ -2,13 +2,21 @@
 import {FwbAvatar, FwbSidebar, FwbSidebarItem, FwbSidebarLogo} from 'flowbite-vue'
 import {useAuthStore} from "../../stores/auth.js";
 import {storeToRefs} from "pinia";
+import {onMounted} from "vue";
+import {solicitudesStore} from "../../stores/solicitudes.js";
 
 const usuarioStore = useAuthStore()
+const solicitudes = solicitudesStore()
 const {user} = storeToRefs(usuarioStore);
 
+const {solicitudesPendientes} = storeToRefs(solicitudes)
 const prueba = () =>{
   console.log("prueba")
 }
+
+onMounted(() => {
+  solicitudes.pendientes()
+});
 
 </script>
 
@@ -67,10 +75,12 @@ const prueba = () =>{
               d="M280-280q-33 0-56.5-23.5T200-360v-400q0-33 23.5-56.5T280-840h560q33 0 56.5 23.5T920-760v400q0 33-23.5 56.5T840-280H280Zm280-188L280-663v303h560v-303L560-468Zm0-98 280-194H280l280 194ZM120-120q-33 0-56.5-23.5T40-200v-500h80v500h660v80H120Zm720-546v-94H280v94-94h560v94Z"/>
         </svg>
       </template>
-      <template #default> Solicitudes</template>
+      <template #default>
+        <router-link to="/solicitudes" class="">Solicitudes</router-link>
+      </template>
       <template #suffix>
         <span
-            class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+            class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">{{solicitudesPendientes}}</span>
       </template>
     </fwb-sidebar-item>
     <fwb-sidebar-item>
@@ -107,7 +117,7 @@ const prueba = () =>{
           <path
               d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/>
         </svg>
-        <button @click="prueba">
+        <button @click="usuarioStore.logout">
           Logout
         </button>
 

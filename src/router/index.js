@@ -14,6 +14,7 @@ import {storeToRefs} from "pinia";
 import NoAutorizado from "../components/NoAutorizado.vue";
 import Grados from "../components/dashboard/admin/Grados.vue";
 import Index from "../components/dashboard/Index.vue";
+import Solicitudes from "../components/dashboard/admin/solicitudes/Solicitudes.vue";
 
 const routes = [
     {path: '/', name: 'Inicio', component: Inicio},
@@ -38,6 +39,7 @@ const routes = [
     {path: '/not-found', name: 'NotFound', component: NotFound},
     {path: '/no-autorizado', name: 'NoAutorizado', component: NoAutorizado},
     {path: '/grados', name: 'Grados', component: Grados, meta: {title: 'Grados', requiresAuth: true, puedoEntrar: "administrador"},},
+    {path: '/solicitudes', name: 'Solicitudes', component: Solicitudes, meta: {title: 'Solicitudes', requiresAuth: true, puedoEntrar: "administrador"},},
 ];
 
 const router = createRouter({

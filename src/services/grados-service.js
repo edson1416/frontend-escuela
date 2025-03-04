@@ -2,7 +2,7 @@ import api from "../lib/axios.js";
 
 
 export default {
-    getAllGrados(page = 1,filtros =null) {
+    getAllGrados(page = 1,filtros =null, catalogo = null) {
         try{
             if(filtros){
                 let filters = [];
@@ -13,7 +13,10 @@ export default {
                     "filters":filters
                 }
                 return api.post('/catalogos/grados/search?page='+page,body)
-            }else {
+            }else if(catalogo){
+                return api('/catalogos/grados?pagination=false')
+            }
+            else {
                 return api('/catalogos/grados?page='+page)
             }
         }catch(error){
